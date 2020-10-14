@@ -16,7 +16,7 @@ namespace Level {
 
         void Update() {
             if(Input.GetKeyDown(KeyCode.Space)) {
-                Debug.Log(level.DisplayFixedField());
+                Debug.Log(level.DisplayActiveParts());
             }
         }
     }

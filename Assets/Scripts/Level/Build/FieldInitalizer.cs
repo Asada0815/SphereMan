@@ -15,8 +15,8 @@ namespace Level.Build {
             var posX = 0.01f * partsSize * x;
             var posY = 0.01f * partsSize * -y;
 
-            if(parts.fixedParts != null) parts.fixedParts.transform.localPosition = new Vector3(posX, posY, 0);
-            if(parts.activeParts != null) parts.activeParts.transform.localPosition = new Vector3(posX, posY, 0);
+            parts.fixedParts.transform.localPosition = new Vector3(posX, posY, 0);
+            parts.activeParts.transform.localPosition = new Vector3(posX, posY, 0);
         }
 
     }

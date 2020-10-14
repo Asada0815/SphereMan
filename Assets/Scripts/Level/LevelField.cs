@@ -10,6 +10,8 @@ namespace Level {
         List<FixedFieldParts> fixedParts;
         List<ActiveFieldParts> activeParts;
 
+
+
         public LevelField(List<FixedFieldParts> fixedParts, List<ActiveFieldParts> activeParts, Vector2 mapSize) {
             this.fixedParts = fixedParts;
             this.activeParts = activeParts;
@@ -17,10 +19,14 @@ namespace Level {
         }
 
         public FieldPartsSet GetAt(int x, int y) {
-            if(x < 0 || x > mapSize.x) return null;
-            if(y < 0 || y > mapSize.y) return null;
+            var fixedDummy = fixedParts[fixedParts.Count - 1];
+            var activeDummy = activeParts[activeParts.Count - 1];
+            if(x < 0 || x > mapSize.x) return new FieldPartsSet(fixedDummy, activeDummy);
+            if(y < 0 || y > mapSize.y) return new FieldPartsSet(fixedDummy, activeDummy);
             var fp = fixedParts[(int)(y * mapSize.x + x)];
+            if(fp == null) fp = fixedDummy;
             var ap = activeParts.Find(a => a.GetPos().Equals(new Vector2(x, y)));
+            if(ap == null) ap = activeDummy;
             return new FieldPartsSet(fp, ap);
         }
 
@@ -28,13 +34,12 @@ namespace Level {
             return GetAt((int)vec.x, (int)vec.y);
         }
 
-        public string DisplayFixedField() {
+        public string DisplayActiveParts() {
             var str = "";
             for(int y = 0; y < mapSize.y; y++) {
                 for(int x = 0; x < mapSize.x; x++) {
-                    var parts = GetAt(x, y).fixedParts;
-                    if(parts == null) str += "0";
-                    else str += ((int)parts.GetPartsType()).ToString();
+                    var parts = GetAt(x, y).activeParts;
+                    str += ((int)parts.GetPartsType()).ToString();
                 }
                 str += "\n";
             }
@@ -42,7 +47,7 @@ namespace Level {
         }
 
     }
-    
+
     public enum FixedFieldPartsType {
         blank,
         wall,

@@ -7,8 +7,12 @@ namespace Level.Build {
     public class FieldBuilder : MonoBehaviour {
 
         [SerializeField] Transform container;
+        [SerializeField] Parts.FixedFieldParts fixedDummy;
+        [SerializeField] Parts.ActiveFieldParts activeDummy;
+
         FieldPartsGenerator generator;
         FieldInitalizer initalizer;
+
 
         public void Awake() {
             generator = GetComponent<FieldPartsGenerator>();
@@ -27,6 +31,9 @@ namespace Level.Build {
                 activeParts.Add(generator.GenerateActiveParts(type, container, (int)(i % mapSize.x), (int)(i / mapSize.x)));
             }
 
+            fixedParts.Add(fixedDummy);
+            activeParts.Add(activeDummy);
+            
             var level = new LevelField(fixedParts, activeParts, mapSize);
 
             initalizer.SetContainerPos(container, mapSize);
