@@ -25,12 +25,12 @@ namespace Level {
             if(y < 0 || y > mapSize.y) return new FieldPartsSet(fixedDummy, activeDummy);
             var fp = fixedParts[(int)(y * mapSize.x + x)];
             if(fp == null) fp = fixedDummy;
-            var ap = activeParts.Find(a => a.GetPos().Equals(new Vector2(x, y)));
+            var ap = activeParts.Find(a => a.pos.Equals(new Vector2(x, y)));
             if(ap == null) ap = activeDummy;
             return new FieldPartsSet(fp, ap);
         }
 
-        public FieldPartsSet GetAtVector(Vector2 vec) {
+        public FieldPartsSet GetAt(Vector2 vec) {
             return GetAt((int)vec.x, (int)vec.y);
         }
 

@@ -15,6 +15,7 @@ namespace Level.Parts {
             this.fixedParts = fixedParts;
             this.activeParts = activeParts;
         }
+
     }
 }
 

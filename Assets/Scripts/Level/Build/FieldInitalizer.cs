@@ -5,18 +5,15 @@ using UnityEngine;
 namespace Level.Build {
     public class FieldInitalizer : MonoBehaviour {
 
-        [SerializeField] int partsSize;
-
         public void SetContainerPos(Transform container, Vector2 mapSize) {
-            container.localPosition = new Vector3(-mapSize.x, mapSize.y, 0) * 0.01f * partsSize * 0.5f;
+            var mapChipSize = FieldMapUtility.I.mapChipSize;
+            container.localPosition = new Vector3(-mapSize.x, mapSize.y, 0) * 0.01f * mapChipSize * 0.5f;
         }
 
         public void PutField(Parts.FieldPartsSet parts, int x, int y) {
-            var posX = 0.01f * partsSize * x;
-            var posY = 0.01f * partsSize * -y;
-
-            parts.fixedParts.transform.localPosition = new Vector3(posX, posY, 0);
-            parts.activeParts.transform.localPosition = new Vector3(posX, posY, 0);
+            var mapPos = FieldMapUtility.I.CalcMapPos(new Vector2(x, y));
+            parts.fixedParts.transform.localPosition = mapPos;
+            parts.activeParts.transform.localPosition = mapPos;
         }
 
     }

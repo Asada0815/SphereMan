@@ -5,6 +5,6 @@
 ..........
 .......wl.
 ......wwl.
-.s...wwwl.
+sss..wwwl.
 wwwwwwwwww
 wwwwwwwwww

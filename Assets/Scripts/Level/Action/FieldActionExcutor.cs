@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace Level.Action {
-    public class ActionResult {
+    public class FieldActionExecutor : MonoBehaviour {
 
         
 
     }
 }
-

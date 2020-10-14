@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace Level.Action {
-    public class ActionSimulator : MonoBehaviour {
+    public class FieldActionResult {
+
+        
 
     }
-    
 }
 

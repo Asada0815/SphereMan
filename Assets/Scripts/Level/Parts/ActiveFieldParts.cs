@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Level.Parts {
     public class ActiveFieldParts : FieldParts {
         [SerializeField] ActiveFieldPartsType type;
-        Vector2 pos;
+        public Vector2 pos;
 
         public void Init(Vector2 pos) {
             this.pos = pos;
@@ -13,9 +13,6 @@ namespace Level.Parts {
 
         public ActiveFieldPartsType GetPartsType() {
             return type;
-        }
-        public Vector2 GetPos() {
-            return pos;
         }
 
     }
