@@ -198,8 +198,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   builder: {fileID: 2023034631}
   filePath: test
-  modifier: {fileID: 2098830666}
-  animationPlayer: {fileID: 2098830667}
+  executor: {fileID: 2098830668}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -649,6 +648,7 @@ GameObject:
   - component: {fileID: 2098830665}
   - component: {fileID: 2098830666}
   - component: {fileID: 2098830667}
+  - component: {fileID: 2098830668}
   m_Layer: 0
   m_Name: Action
   m_TagString: Untagged
@@ -692,6 +692,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0652e0ac9c5c444ed9b08a327606f136, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2098830668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2098830664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d3b574d77cc0414a80f7ae76ad29e42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &241012430857981332

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 923960139933093317}
   - component: {fileID: 6509706613342466830}
   - component: {fileID: -5276412814880185848}
+  - component: {fileID: 6135456845643188532}
   m_Layer: 0
   m_Name: sphereMan
   m_TagString: Untagged
@@ -110,3 +111,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 0.3
+--- !u!114 &6135456845643188532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 923960139933093319}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80d42a8c4f2ad4e0e84fecd404e28ab6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

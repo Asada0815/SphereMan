@@ -22,7 +22,7 @@ namespace Level.Build {
         public ActiveFieldParts GenerateActiveParts(ActiveFieldPartsType partsType, Transform container, int x, int y) {
             var partsObj = activeDict.Find(d => d.type == partsType).obj;
             var parts = Instantiate(partsObj).GetComponent<ActiveFieldParts>();
-            parts.Init(new Vector2(x, y));
+            parts.SetPos(new Vector2(x, y));
             parts.transform.parent = container;
             return parts;
         }

@@ -34,6 +34,10 @@ namespace Level {
             return GetAt((int)vec.x, (int)vec.y);
         }
 
+        public List<ActiveFieldParts> GetActiveFieldParts() {
+            return activeParts;
+        }
+
         public string DisplayActiveParts() {
             var str = "";
             for(int y = 0; y < mapSize.y; y++) {

@@ -33,17 +33,17 @@ namespace Level.Build {
 
             fixedParts.Add(fixedDummy);
             activeParts.Add(activeDummy);
-            
-            var level = new LevelField(fixedParts, activeParts, mapSize);
+
+            var field = new LevelField(fixedParts, activeParts, mapSize);
 
             initalizer.SetContainerPos(container, mapSize);
             for(int y = 0; y < mapSize.y; y++) {
                 for(int x = 0; x < mapSize.x; x++) {
-                    initalizer.PutField(level.GetAt(x, y), x, y);
+                    initalizer.InitField(field.GetAt(x, y), x, y, field);
                 }
             }
 
-            return level;
+            return field;
         }
     }
 
