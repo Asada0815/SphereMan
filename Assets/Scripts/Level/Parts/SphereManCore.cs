@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Level.Parts.SphereMan;
 using Level.Action;
+using KeyInput;
 
 namespace Level.Parts {
     public class SphereManCore : ActiveFieldParts {
@@ -16,8 +17,13 @@ namespace Level.Parts {
             moveStrategy.Init(field, anim);
         }
 
-        public override FieldActionResult Execute() {
-            return moveStrategy.MoveHorizontal(pos, true);
+        public override FieldActionResult Execute(InputTrigger trigger) {
+            FieldActionResult result = null;
+            if(trigger.type == InputType.move) {
+                if(trigger.dir == Vector2.right) result = moveStrategy.MoveHorizontal(pos, true);
+                if(trigger.dir == Vector2.left) result = moveStrategy.MoveHorizontal(pos, false);
+            }
+            return result;
         }
 
     }

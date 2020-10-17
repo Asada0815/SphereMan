@@ -1,10 +1,24 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
+using UniRx;
 using DG.Tweening;
 
 namespace Level.Action {
     public class FieldAnimationPlayer : MonoBehaviour {
+
+        public IObservable<Unit> onFinish {
+            get {
+                return onFinishSub;
+            }
+        }
+
+        Subject<Unit> onFinishSub;
+
+        void Awake() {
+            onFinishSub = new Subject<Unit>();
+        }
 
         public void Play(List<FieldAnimationParts> stream) {
             var seqence = DOTween.Sequence();
@@ -13,7 +27,7 @@ namespace Level.Action {
                 seqence.Insert(endTime, animation.sequence);
                 endTime += animation.endTime;
             }
-            seqence.Play();
+            seqence.Play().OnComplete(() => onFinishSub.OnNext(Unit.Default));
         }
 
     }

@@ -20,18 +20,12 @@ namespace Level {
         void Start() {
             level = builder.Build(filePath);
             executor.Init(level);       
-            input.trigger
-                .Subscribe(t => Debug.Log(t.type + " " + t.dir));
         }
 
         void Update() {
             if(Input.GetKeyDown(KeyCode.Space)) {
                 Debug.Log(level.DisplayActiveParts());
             }
-            if(Input.GetKeyDown(KeyCode.X)) {
-                executor.Execute();
-            }
-
         }
     }
 }

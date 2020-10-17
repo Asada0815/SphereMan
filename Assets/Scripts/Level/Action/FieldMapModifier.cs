@@ -25,6 +25,7 @@ namespace Level.Action {
         }
 
         void MoveParts(FieldMapDiff diff) {
+            Debug.Log("move  " + diff.toPos);
             var target = field.GetAt(diff.fromPos).activeParts;
             Assert.AreNotEqual(target.GetPartsType(), ActiveFieldPartsType.none);
             Assert.AreEqual(field.GetAt(diff.toPos).activeParts.GetPartsType(), ActiveFieldPartsType.none);

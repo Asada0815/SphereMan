@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Level.Action;
+using KeyInput;
 
 namespace Level.Parts {
     public class ActiveFieldParts : FieldParts {
@@ -24,7 +25,7 @@ namespace Level.Parts {
             return type;
         }
 
-        public virtual FieldActionResult Execute() {
+        public virtual FieldActionResult Execute(InputTrigger trigger) {
             return null;
         }
 

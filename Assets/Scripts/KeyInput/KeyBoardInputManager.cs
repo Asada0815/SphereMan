@@ -29,9 +29,9 @@ namespace KeyInput {
 
         InputTrigger MakeTrigger() {
             for(int i = 0; i < 4; i++) {
-                if(Input.GetKeyDown(arrows[i]) && pushingIndex == -1)
+                if(Input.GetKey(arrows[i]) && pushingIndex == -1)
                     pushingIndex = i;
-                if(Input.GetKeyUp(arrows[i]) && pushingIndex == i)
+                if(!Input.GetKey(arrows[i]) && pushingIndex == i)
                     pushingIndex = -1;
             }
             if(pushingIndex == -1) return null;
