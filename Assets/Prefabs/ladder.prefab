@@ -96,3 +96,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 3
+  collision:
+    isMovable: 1
+    isFallable: 0

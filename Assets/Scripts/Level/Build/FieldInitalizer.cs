@@ -7,7 +7,7 @@ namespace Level.Build {
 
         public void SetContainerPos(Transform container, Vector2 mapSize) {
             var mapChipSize = FieldMapUtility.I.mapChipSize;
-            container.localPosition = new Vector3(-mapSize.x, mapSize.y, 0) * 0.01f * mapChipSize * 0.5f;
+            container.localPosition = new Vector3(-mapSize.x, -mapSize.y, 0) * 0.01f * mapChipSize * 0.5f;
         }
 
         public void InitField(Parts.FieldPartsSet parts, int x, int y, LevelField field) {

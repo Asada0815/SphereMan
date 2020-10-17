@@ -41,6 +41,12 @@ namespace Level.Action {
             this.sequence = sequence;
             this.endTime = endTime;
         }
+
+        public FieldAnimationParts Join(FieldAnimationParts target) {
+            sequence.Insert(endTime, target.sequence);
+            endTime += target.endTime;
+            return this;
+        }
     }
 }
 

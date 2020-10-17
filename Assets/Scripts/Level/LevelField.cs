@@ -23,7 +23,7 @@ namespace Level {
             var activeDummy = activeParts[activeParts.Count - 1];
             if(x < 0 || x > mapSize.x) return new FieldPartsSet(fixedDummy, activeDummy);
             if(y < 0 || y > mapSize.y) return new FieldPartsSet(fixedDummy, activeDummy);
-            var fp = fixedParts[(int)(y * mapSize.x + x)];
+            var fp = fixedParts[(int)((mapSize.y - y - 1) * mapSize.x + x)];
             if(fp == null) fp = fixedDummy;
             var ap = activeParts.Find(a => a.pos.Equals(new Vector2(x, y)));
             if(ap == null) ap = activeDummy;
@@ -42,7 +42,7 @@ namespace Level {
             var str = "";
             for(int y = 0; y < mapSize.y; y++) {
                 for(int x = 0; x < mapSize.x; x++) {
-                    var parts = GetAt(x, y).activeParts;
+                    var parts = GetAt(x, (int)mapSize.y - y - 1).activeParts;
                     str += ((int)parts.GetPartsType()).ToString();
                 }
                 str += "\n";

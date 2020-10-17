@@ -6,15 +6,18 @@ using UnityEngine;
 namespace Level.Parts {
     public class FieldParts : MonoBehaviour {
 
-        static List<FixedFieldPartsType> obstacles = new List<FixedFieldPartsType> {
-                FixedFieldPartsType.wall
-            };
-
         public static bool IsMovable(FieldPartsSet parts) {
             if(parts.activeParts.GetPartsType() != ActiveFieldPartsType.none) return false;
-            if(obstacles.Contains(parts.fixedParts.GetPartsType())) return false;
+            if(!parts.fixedParts.GetCollisionType().isMovable) return false;
             return true;
         }
+
+        public static bool IsFallable(FieldPartsSet parts) {
+            if(parts.activeParts.GetPartsType() != ActiveFieldPartsType.none) return false;
+            if(!parts.fixedParts.GetCollisionType().isFallable) return false;
+            return true;
+        }
+
     }
 
     public class FieldPartsSet {

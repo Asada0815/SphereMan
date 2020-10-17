@@ -3,8 +3,8 @@
 ..........
 ..........
 ..........
-.......wl.
-......wwl.
-.s...wwwl.
+.s.....wl.
+ww....wwl.
+ww...wwwl.
 wwwwwwwwww
 wwwwwwwwww

@@ -17,14 +17,45 @@ namespace Level.Parts.SphereMan {
 
         public FieldActionResult MoveHorizontal(Vector2 pos, bool isRight) {
             var dir = new Vector2(isRight ? 1 : -1, 0);
-            if(FieldParts.IsMovable(field.GetAt(pos + dir))) {
+            var toPos = pos + dir;
+            if(FieldParts.IsMovable(field.GetAt(toPos))) {
+                if(FieldParts.IsFallable(field.GetAt(toPos + Vector2.down))) { 
+                    var landPos = FindLandingPos(toPos);
+                    return new FieldActionResult(
+                        new FieldMapDiff(pos, landPos),
+                        anim.Move(toPos)
+                            .Join(anim.Fall(landPos, (int)(toPos - landPos).y)));
+                }
+                else return new FieldActionResult(
+                    new FieldMapDiff(pos, toPos),
+                    anim.Move(toPos));
+            }
+            else if(CheckIsJumpable(pos, isRight)) {
+                toPos = toPos + Vector2.up;
                 return new FieldActionResult(
-                    new FieldMapDiff(pos, pos + dir),
-                    anim.Move(pos + dir)
-                );
+                    new FieldMapDiff(pos, toPos),
+                    anim.Jump(toPos));
             }
             else return null;
         }
+
+
+        bool CheckIsJumpable(Vector2 pos, bool isRight) {
+            var dir = new Vector2(isRight ? 1 : -1, 1);
+            if(!FieldParts.IsMovable(field.GetAt(pos + dir))) return false;
+            if(!FieldParts.IsMovable(field.GetAt(pos + Vector2.up))) return false;
+            return true;
+        }
+
+        Vector2 FindLandingPos(Vector2 fromPos) {
+            var landPos = fromPos;
+            while(FieldParts.IsFallable(field.GetAt(landPos + Vector2.down))) {
+                landPos += Vector2.down;
+            }
+            return landPos;
+        }
+
+
 
     }
 }

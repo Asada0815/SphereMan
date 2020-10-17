@@ -9,7 +9,7 @@ namespace Level {
 
         public Vector3 CalcMapPos(Vector2 pos) {
             var posX = 0.01f * mapChipSize * pos.x;
-            var posY = 0.01f * mapChipSize * -pos.y;
+            var posY = 0.01f * mapChipSize * pos.y;
             return new Vector3(posX, posY, 0);
         }
 

@@ -28,7 +28,7 @@ namespace Level.Build {
             for(int i = 0; i < decoded.activeFieldParts.Count; i++) {
                 var type = decoded.activeFieldParts[i];
                 if(type == ActiveFieldPartsType.none) continue;
-                activeParts.Add(generator.GenerateActiveParts(type, container, (int)(i % mapSize.x), (int)(i / mapSize.x)));
+                activeParts.Add(generator.GenerateActiveParts(type, container, (int)(i % mapSize.x), (int)(mapSize.y - (i / mapSize.x))));
             }
 
             fixedParts.Add(fixedDummy);

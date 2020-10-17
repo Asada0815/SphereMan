@@ -55,4 +55,8 @@ namespace Level.Action {
 
     }
 
+    public enum FieldActionTrigger {
+        
+    }
+
 }
