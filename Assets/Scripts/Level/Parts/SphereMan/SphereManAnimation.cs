@@ -8,11 +8,16 @@ namespace Level.Parts.SphereMan {
     public class SphereManAnimation : MonoBehaviour {
 
         [SerializeField] float moveDuration;
-        [SerializeField] float fallDuration;
-        [SerializeField] float jumpDuration;
         [SerializeField] Ease moveEase;
+
+        [SerializeField] float fallDuration;
         [SerializeField] Ease fallEase;
+
+        [SerializeField] float jumpDuration;
         [SerializeField] Ease jumpEase;
+
+        [SerializeField] float ascendDuration;
+        [SerializeField] Ease ascendEase;
 
 
         public FieldAnimationParts Move(Vector2 toPos) {
@@ -37,6 +42,13 @@ namespace Level.Parts.SphereMan {
                 .SetEase(jumpEase);
 
             return new FieldAnimationParts(seqence, moveDuration);
+        }
+
+        public FieldAnimationParts Ascend(Vector2 toPos) {
+            var seqence = DOTween.Sequence();
+            seqence.Append(transform.DOLocalMove(FieldMapUtility.I.CalcMapPos(toPos), ascendDuration)
+                .SetEase(ascendEase));
+            return new FieldAnimationParts(seqence, ascendDuration);
         }
 
     }

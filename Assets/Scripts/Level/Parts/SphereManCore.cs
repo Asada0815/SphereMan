@@ -22,6 +22,8 @@ namespace Level.Parts {
             if(trigger.type == InputType.move) {
                 if(trigger.dir == Vector2.right) result = moveStrategy.MoveHorizontal(pos, true);
                 if(trigger.dir == Vector2.left) result = moveStrategy.MoveHorizontal(pos, false);
+                if(trigger.dir == Vector2.up) result = moveStrategy.MoveVertical(pos, true);
+                if(trigger.dir == Vector2.down) result = moveStrategy.MoveVertical(pos, false);
             }
             return result;
         }

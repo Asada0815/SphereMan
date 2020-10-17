@@ -39,6 +39,18 @@ namespace Level.Parts.SphereMan {
             else return null;
         }
 
+        public FieldActionResult MoveVertical(Vector2 pos, bool isUp) {
+            var dir = new Vector2(0, isUp ? 1 : -1);
+            var toPos = pos + dir;
+            if(field.GetAt(pos).fixedParts.GetPartsType() == FixedFieldPartsType.ladder
+                && FieldParts.IsMovable(field.GetAt(toPos))) {
+                return new FieldActionResult(
+                    new FieldMapDiff(pos, toPos),
+                    anim.Ascend(toPos));
+            }
+            else return null;
+        }
+
 
         bool CheckIsJumpable(Vector2 pos, bool isRight) {
             var dir = new Vector2(isRight ? 1 : -1, 1);

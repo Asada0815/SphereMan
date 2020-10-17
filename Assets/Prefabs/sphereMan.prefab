@@ -111,11 +111,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveDuration: 0.12
-  fallDuration: 0.12
-  jumpDuration: 0.16
   moveEase: 1
+  fallDuration: 0.12
   fallEase: 1
+  jumpDuration: 0.16
   jumpEase: 1
+  ascendDuration: 0.12
+  ascendEase: 1
 --- !u!114 &6135456845643188532
 MonoBehaviour:
   m_ObjectHideFlags: 0
