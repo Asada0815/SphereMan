@@ -45,8 +45,8 @@ namespace Level.Action {
             foreach(var parts in field.GetActiveFieldParts()) {
                 var result = parts.Execute(trigger);
                 if(result == null) continue;
-                mapDiffs.Add(result.mapDiff);
-                animationParts.Add(result.animationParts);
+                if(result.mapDiff != null) mapDiffs.Add(result.mapDiff);
+                if(result.animationParts != null) animationParts.Add(result.animationParts);
             }
             mapDiffs.ForEach(diff => mapModifier.Modify(diff));
             animationPlayer.Play(animationParts);

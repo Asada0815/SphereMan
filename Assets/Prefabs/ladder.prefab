@@ -99,3 +99,4 @@ MonoBehaviour:
   collision:
     isMovable: 1
     isFallable: 0
+    isMovableShot: 1

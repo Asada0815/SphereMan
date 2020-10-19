@@ -35,7 +35,11 @@ namespace KeyInput {
                     pushingIndex = -1;
             }
             if(pushingIndex == -1) return null;
-            return new InputTrigger(InputType.move, dirs[pushingIndex]);
+            InputType type;
+            if(Input.GetKey(KeyCode.Z)) type = InputType.shot;
+            else if(Input.GetKey(KeyCode.X)) type = InputType.dShot;
+            else type = InputType.move;
+            return new InputTrigger(type, dirs[pushingIndex]);
         }
 
     }

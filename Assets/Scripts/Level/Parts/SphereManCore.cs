@@ -9,12 +9,17 @@ namespace Level.Parts {
     public class SphereManCore : ActiveFieldParts {
 
         SphereManMoveStrategy moveStrategy;
-        SphereManAnimation anim; 
+        SphereManShotStrategy shotStrategy;
+        SphereManAnimation sphereManAnim; 
+        ShotAnimation shotAnim;
 
         protected override void Init() {
             moveStrategy = GetComponent<SphereManMoveStrategy>();
-            anim = GetComponent<SphereManAnimation>();
-            moveStrategy.Init(field, anim);
+            shotStrategy = GetComponent<SphereManShotStrategy>();
+            sphereManAnim = GetComponent<SphereManAnimation>();
+            shotAnim = GetComponent<ShotAnimation>();
+            moveStrategy.Init(field, sphereManAnim);
+            shotStrategy.Init(field, shotAnim);
         }
 
         public override FieldActionResult Execute(InputTrigger trigger) {
@@ -24,6 +29,9 @@ namespace Level.Parts {
                 if(trigger.dir == Vector2.left) result = moveStrategy.MoveHorizontal(pos, false);
                 if(trigger.dir == Vector2.up) result = moveStrategy.MoveVertical(pos, true);
                 if(trigger.dir == Vector2.down) result = moveStrategy.MoveVertical(pos, false);
+            }
+            if(trigger.type == InputType.shot) {
+                result = shotStrategy.Shot(pos, trigger.dir);
             }
             return result;
         }

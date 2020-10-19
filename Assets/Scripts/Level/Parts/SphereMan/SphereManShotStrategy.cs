@@ -8,15 +8,21 @@ namespace Level.Parts.SphereMan {
 
     public class SphereManShotStrategy : MonoBehaviour {
         LevelField field;
-        SphereManAnimation anim;
+        ShotAnimation anim;
 
-        public void Init(LevelField field, SphereManAnimation anim) {
+        Vector2 hitPos;
+
+        public void Init(LevelField field, ShotAnimation anim) {
             this.field = field;
             this.anim = anim;
         }
 
         public FieldActionResult Shot(Vector2 pos, Vector2 dir) {
-            
+            hitPos = FindShotHitPos(pos, dir);
+            return new FieldActionResult(
+                null,
+                anim.Shot(pos, hitPos)
+            );
         }
 
         Vector2 FindShotHitPos(Vector2 pos, Vector2 dir) {
@@ -26,8 +32,6 @@ namespace Level.Parts.SphereMan {
             }
             return hitPos;
         }
-
-
 
     }
 
