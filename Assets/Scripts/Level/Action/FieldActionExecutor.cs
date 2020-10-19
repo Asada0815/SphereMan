@@ -12,15 +12,15 @@ namespace Level.Action {
         LevelField field;
         [SerializeField] InputManager input;
 
-        bool isReady;
+        public bool isReady;
 
         void Awake() {
             this.mapModifier = GetComponent<FieldMapModifier>();
             this.animationPlayer = GetComponent<FieldAnimationPlayer>();
+            isReady = false;
         }
 
         void Start() {
-            isReady = false;
             input.trigger
                 .Where(_ => isReady)
                 .Subscribe(trigger => Execute(trigger));
@@ -56,7 +56,7 @@ namespace Level.Action {
     }
 
     public enum FieldActionTrigger {
-        
+
     }
 
 }

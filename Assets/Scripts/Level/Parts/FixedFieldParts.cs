@@ -19,8 +19,9 @@ namespace Level.Parts {
 
         [System.Serializable]
         public class PartsCollisionType {
-            public bool isMovable;
-            public bool isFallable;
+            public bool isMovable;  //スフィアマンが移動できる
+            public bool isFallable; //スフィアマンが落下できる
+            public bool isMovableShot;  //ショットが通過できる
 
         }
 

@@ -18,6 +18,13 @@ namespace Level.Parts {
             return true;
         }
 
+        public static bool IsMovableShot(FieldPartsSet parts) {
+            if(parts.activeParts.GetPartsType() != ActiveFieldPartsType.none) return false;
+            if(!parts.fixedParts.GetCollisionType().isMovableShot) return false;
+            return true;
+        }
+
+
     }
 
     public class FieldPartsSet {
