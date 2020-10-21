@@ -160,3 +160,4 @@ MonoBehaviour:
   shotMoveEase: 1
   shotFadeOutDuration: 0.16
   shotFadeOutEase: 1
+  rotateSpeed: 500

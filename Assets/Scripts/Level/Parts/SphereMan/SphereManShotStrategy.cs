@@ -19,6 +19,7 @@ namespace Level.Parts.SphereMan {
 
         public FieldActionResult Shot(Vector2 pos, Vector2 dir) {
             hitPos = FindShotHitPos(pos, dir);
+            if(hitPos.Equals(Vector2.positiveInfinity)) return null;
             return new FieldActionResult(
                 null,
                 anim.Shot(pos, hitPos)
@@ -27,8 +28,9 @@ namespace Level.Parts.SphereMan {
 
         Vector2 FindShotHitPos(Vector2 pos, Vector2 dir) {
             var hitPos = pos;
-            while(FieldParts.IsFallable(field.GetAt(hitPos + dir))) {
+            while(FieldParts.IsMovableShot(field.GetAt(hitPos + dir))) {
                 hitPos += dir;
+                if(field.CheckIsOut(hitPos)) return Vector2.positiveInfinity;
             }
             return hitPos;
         }

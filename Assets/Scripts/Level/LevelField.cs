@@ -21,8 +21,9 @@ namespace Level {
         public FieldPartsSet GetAt(int x, int y) {
             var fixedDummy = fixedParts[fixedParts.Count - 1];
             var activeDummy = activeParts[activeParts.Count - 1];
-            if(x < 0 || x > mapSize.x) return new FieldPartsSet(fixedDummy, activeDummy);
-            if(y < 0 || y > mapSize.y) return new FieldPartsSet(fixedDummy, activeDummy);
+            if(CheckIsOut(new Vector2(x, y))) {
+                return new FieldPartsSet(fixedDummy, activeDummy);
+            }
             var fp = fixedParts[(int)((mapSize.y - y - 1) * mapSize.x + x)];
             if(fp == null) fp = fixedDummy;
             var ap = activeParts.Find(a => a.pos.Equals(new Vector2(x, y)));
@@ -48,6 +49,12 @@ namespace Level {
                 str += "\n";
             }
             return str;
+        }
+
+        public bool CheckIsOut(Vector2 pos) {
+            if(pos.x < 0 || pos.x > mapSize.x) return true;
+            if(pos.y < 0 || pos.y > mapSize.y) return true;
+            return false;
         }
 
     }

@@ -18,9 +18,12 @@ namespace Level.Parts.SphereMan {
         public FieldActionResult MoveHorizontal(Vector2 pos, bool isRight) {
             var dir = new Vector2(isRight ? 1 : -1, 0);
             var toPos = pos + dir;
+            if(field.CheckIsOut(toPos)) return null;
             if(FieldParts.IsMovable(field.GetAt(toPos))) {
                 if(FieldParts.IsFallable(field.GetAt(toPos + Vector2.down))) { 
                     var landPos = FindLandingPos(toPos);
+                    if(landPos.Equals(Vector2.positiveInfinity)) 
+                        return null;
                     return new FieldActionResult(
                         new FieldMapDiff(pos, landPos),
                         anim.Move(toPos)
@@ -63,6 +66,7 @@ namespace Level.Parts.SphereMan {
             var landPos = fromPos;
             while(FieldParts.IsFallable(field.GetAt(landPos + Vector2.down))) {
                 landPos += Vector2.down;
+                if(field.CheckIsOut(landPos)) return Vector2.positiveInfinity;
             }
             return landPos;
         }
