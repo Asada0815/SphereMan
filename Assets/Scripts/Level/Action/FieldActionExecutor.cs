@@ -53,13 +53,12 @@ namespace Level.Action {
             mapDiffs.ForEach(diff => mapModifier.Modify(diff));
             animationPlayer.Play(animationParts);
             Debug.Log("execute");
-            if(triggers.Count > 0) ExecuteTrigger(triggers);
+            if(triggers.Count > 0) ExecuteTrigger(triggers, animationParts);
         } 
 
-        public void ExecuteTrigger(List<FieldActionTrigger> triggers) {
+        public void ExecuteTrigger(List<FieldActionTrigger> triggers, List<FieldAnimationParts> animationParts) {
             isReady = false;
             var mapDiffs = new List<FieldMapDiff>();
-            var animationParts = new List<FieldAnimationParts>();
             var sub_triggers = new List<FieldActionTrigger>();
             foreach(var parts in field.GetActiveFieldParts()) {
                 foreach(var trigger in triggers) {
@@ -73,7 +72,7 @@ namespace Level.Action {
             mapDiffs.ForEach(diff => mapModifier.Modify(diff));
             animationPlayer.Play(animationParts);
             Debug.Log("trigger");
-            if(sub_triggers.Count > 0) ExecuteTrigger(sub_triggers);
+            if(sub_triggers.Count > 0) ExecuteTrigger(sub_triggers, animationParts);
         }
 
     }

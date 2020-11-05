@@ -35,7 +35,7 @@ namespace Level.Parts.SphereMan {
             seqence.Join(g_shot.transform.DOLocalRotate(new Vector3(0, 0, rotateSpeed * totalMoveDuration), totalMoveDuration).SetEase(Ease.Linear));
             seqence.Append(DOTween.ToAlpha(() => sp_shot.color, color => sp_shot.color = color, 0, shotFadeOutDuration)
                 .SetEase(shotFadeOutEase));
-            return new FieldAnimationParts(seqence, totalMoveDuration + shotFadeOutDuration);
+            return new FieldAnimationParts(seqence, totalMoveDuration);
         }
 
 

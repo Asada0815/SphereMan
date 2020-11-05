@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7070712892820226051}
   - component: {fileID: 7070712892820226060}
-  - component: {fileID: 5838078043209495033}
+  - component: {fileID: 4171373767479372024}
   m_Layer: 0
   m_Name: sphereWall
   m_TagString: Untagged
@@ -83,7 +83,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5838078043209495033
+--- !u!114 &4171373767479372024
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -92,8 +92,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 7070712892820226062}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3aa4320018b934cdb8cc434f80ce89fd, type: 3}
+  m_Script: {fileID: 11500000, guid: a8ccb096bf9ce40509d40469081cda5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   type: 3
   pos: {x: 0, y: 0}
+  appearDuration: 0.2
+  appearEase: 5
+  waitDuration: 0.5

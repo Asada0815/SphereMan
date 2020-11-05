@@ -41,9 +41,11 @@ namespace Level.Parts.SphereMan {
         }
 
         public FieldActionResult GenerateBlock() {
+            if(!FieldParts.IsCreatableWall(field.GetAt(shotMemory.hitPos))) return null;
+            SphereWall parts = (SphereWall)field.CreateActiveParts(ActiveFieldPartsType.sphereWall, shotMemory.hitPos);
             return new FieldActionResult(
-                new FieldMapDiff(shotMemory.hitPos, ActiveFieldPartsType.sphereWall),
-                null,
+                new FieldMapDiff(shotMemory.hitPos, parts),
+                parts.Appear(),
                 null
             );
         }

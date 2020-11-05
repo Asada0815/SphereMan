@@ -34,7 +34,7 @@ namespace Level.Build {
             fixedParts.Add(fixedDummy);
             activeParts.Add(activeDummy);
 
-            var field = new LevelField(fixedParts, activeParts, mapSize);
+            var field = new LevelField(fixedParts, activeParts, mapSize, this);
 
             initalizer.SetContainerPos(container, mapSize);
             for(int y = 0; y < mapSize.y; y++) {
@@ -46,13 +46,14 @@ namespace Level.Build {
             return field;
         }
 
-        public void AddActiveParts(LevelField field, ActiveFieldPartsType partsType, Vector2 pos) {
+        public Parts.ActiveFieldParts CreateActiveParts(LevelField field, ActiveFieldPartsType partsType, Vector2 pos) {
             var x = (int)pos.x;
             var y = (int)pos.y;
             var generated = generator.GenerateActiveParts(partsType, container, x, y);
-            field.Append(generated);
             initalizer.InitField(new Parts.FieldPartsSet(fixedDummy, generated), x, y, field);
+            return generated;
         }
+
     }
 
 }

@@ -36,9 +36,12 @@ namespace KeyInput {
             }
             if(pushingIndex == -1) return null;
             InputType type;
-            if(Input.GetKey(KeyCode.Z)) type = InputType.shot;
-            else if(Input.GetKey(KeyCode.X)) type = InputType.dShot;
-            else type = InputType.move;
+            if(Input.GetKey(KeyCode.Z) && Input.GetKeyDown(arrows[pushingIndex]))
+                type = InputType.shot;
+            else if(Input.GetKey(KeyCode.X) && Input.GetKeyDown(arrows[pushingIndex]))
+                type = InputType.dShot;
+            else if(!Input.GetKey(KeyCode.Z) && !Input.GetKey(KeyCode.X)) type = InputType.move;
+            else return null;
             return new InputTrigger(type, dirs[pushingIndex]);
         }
 

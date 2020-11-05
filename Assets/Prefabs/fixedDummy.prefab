@@ -99,3 +99,4 @@ MonoBehaviour:
     isMovable: 1
     isFallable: 1
     isMovableShot: 1
+    isCreatebleWall: 1

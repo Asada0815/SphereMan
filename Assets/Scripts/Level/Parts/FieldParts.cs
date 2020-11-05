@@ -23,7 +23,12 @@ namespace Level.Parts {
             if(!parts.fixedParts.GetCollisionType().isMovableShot) return false;
             return true;
         }
-
+        
+        public static bool IsCreatableWall(FieldPartsSet parts) {
+            if(parts.activeParts.GetPartsType() != ActiveFieldPartsType.none) return false;
+            if(!parts.fixedParts.GetCollisionType().isCreatebleWall) return false;
+            return true;
+        }
 
     }
 

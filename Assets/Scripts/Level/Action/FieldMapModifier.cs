@@ -9,7 +9,6 @@ namespace Level.Action {
     public class FieldMapModifier : MonoBehaviour {
         
         LevelField field;
-        [SerializeField] FieldBuilder builder;
         public void Init(LevelField field) {
             this.field = field;
         }
@@ -35,7 +34,7 @@ namespace Level.Action {
 
         void CreateParts(FieldMapDiff diff) {
             Assert.AreEqual(field.GetAt(diff.toPos).activeParts.GetPartsType(), ActiveFieldPartsType.none);
-            builder.AddActiveParts(field, diff.partsType, diff.toPos);
+            field.Append(diff.parts);
         }
 
         void RemoveParts(FieldMapDiff diff) {
@@ -46,7 +45,7 @@ namespace Level.Action {
     public class FieldMapDiff {
         public FieldMapDiffType diffType;
         public Vector2 fromPos, toPos;
-        public ActiveFieldPartsType partsType;
+        public ActiveFieldParts parts;
 
         public FieldMapDiff(Vector2 fromPos, Vector2 toPos) { // move
             this.diffType = FieldMapDiffType.move;
@@ -54,10 +53,10 @@ namespace Level.Action {
             this.toPos = toPos;
         }
 
-        public FieldMapDiff(Vector2 toPos, ActiveFieldPartsType partsType) { // create
+        public FieldMapDiff(Vector2 toPos, ActiveFieldParts parts) { // create
             this.diffType = FieldMapDiffType.create;
             this.toPos = toPos;
-            this.partsType = partsType;
+            this.parts = parts;
         }
 
         public FieldMapDiff(Vector2 toPos) { // remove

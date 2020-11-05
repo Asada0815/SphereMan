@@ -9,13 +9,16 @@ namespace Level {
         Vector2 mapSize;
         List<FixedFieldParts> fixedParts;
         List<ActiveFieldParts> activeParts;
+        Build.FieldBuilder builder;
 
 
 
-        public LevelField(List<FixedFieldParts> fixedParts, List<ActiveFieldParts> activeParts, Vector2 mapSize) {
+        public LevelField(List<FixedFieldParts> fixedParts, List<ActiveFieldParts> activeParts, Vector2 mapSize, 
+            Build.FieldBuilder builder) {
             this.fixedParts = fixedParts;
             this.activeParts = activeParts;
             this.mapSize = mapSize;
+            this.builder = builder;
         }
 
         public FieldPartsSet GetAt(int x, int y) {
@@ -39,7 +42,12 @@ namespace Level {
             return activeParts;
         }
 
-        public void Append(ActiveFieldParts parts) {
+        public ActiveFieldParts CreateActiveParts(ActiveFieldPartsType partsType, Vector2 pos) {
+            var parts = builder.CreateActiveParts(this, partsType, pos);
+            return parts;
+        }
+
+        public void Append(Parts.ActiveFieldParts parts) {
             activeParts.Insert(activeParts.Count - 1, parts);
         }
 
