@@ -27,17 +27,17 @@ namespace Level.Parts.SphereMan {
                     return new FieldActionResult(
                         new FieldMapDiff(pos, landPos),
                         anim.Move(toPos)
-                            .Join(anim.Fall(landPos, (int)(toPos - landPos).y)));
+                            .Join(anim.Fall(landPos, (int)(toPos - landPos).y)), null);
                 }
                 else return new FieldActionResult(
                     new FieldMapDiff(pos, toPos),
-                    anim.Move(toPos));
+                    anim.Move(toPos), null);
             }
             else if(CheckIsJumpable(pos, isRight)) {
                 toPos = toPos + Vector2.up;
                 return new FieldActionResult(
                     new FieldMapDiff(pos, toPos),
-                    anim.Jump(toPos));
+                    anim.Jump(toPos), null);
             }
             else return null;
         }
@@ -49,7 +49,9 @@ namespace Level.Parts.SphereMan {
                 && FieldParts.IsMovable(field.GetAt(toPos))) {
                 return new FieldActionResult(
                     new FieldMapDiff(pos, toPos),
-                    anim.Ascend(toPos));
+                    anim.Ascend(toPos),
+                    null
+                    );
             }
             else return null;
         }

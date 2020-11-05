@@ -36,6 +36,10 @@ namespace Level.Parts {
             return result;
         }
 
+        public override FieldActionResult ExecuteTrigger(FieldActionTrigger trigger) {
+            return shotStrategy.GenerateBlock();
+        }
+
     }
 }
 

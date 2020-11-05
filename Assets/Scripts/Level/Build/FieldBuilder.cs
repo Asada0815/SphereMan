@@ -45,6 +45,14 @@ namespace Level.Build {
 
             return field;
         }
+
+        public void AddActiveParts(LevelField field, ActiveFieldPartsType partsType, Vector2 pos) {
+            var x = (int)pos.x;
+            var y = (int)pos.y;
+            var generated = generator.GenerateActiveParts(partsType, container, x, y);
+            field.Append(generated);
+            initalizer.InitField(new Parts.FieldPartsSet(fixedDummy, generated), x, y, field);
+        }
     }
 
 }

@@ -29,6 +29,10 @@ namespace Level.Parts {
             return null;
         }
 
+        public virtual FieldActionResult ExecuteTrigger(FieldActionTrigger trigger) {
+            return null;
+        }
+
     }
 
 

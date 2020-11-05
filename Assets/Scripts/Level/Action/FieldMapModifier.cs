@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Level.Parts;
+using Level.Build;
 using UnityEngine.Assertions;
 
 namespace Level.Action {
     public class FieldMapModifier : MonoBehaviour {
         
         LevelField field;
+        [SerializeField] FieldBuilder builder;
         public void Init(LevelField field) {
             this.field = field;
         }
@@ -32,7 +34,8 @@ namespace Level.Action {
         }
 
         void CreateParts(FieldMapDiff diff) {
-
+            Assert.AreEqual(field.GetAt(diff.toPos).activeParts.GetPartsType(), ActiveFieldPartsType.none);
+            builder.AddActiveParts(field, diff.partsType, diff.toPos);
         }
 
         void RemoveParts(FieldMapDiff diff) {
@@ -54,6 +57,7 @@ namespace Level.Action {
         public FieldMapDiff(Vector2 toPos, ActiveFieldPartsType partsType) { // create
             this.diffType = FieldMapDiffType.create;
             this.toPos = toPos;
+            this.partsType = partsType;
         }
 
         public FieldMapDiff(Vector2 toPos) { // remove

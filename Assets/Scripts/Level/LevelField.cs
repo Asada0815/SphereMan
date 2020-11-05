@@ -39,6 +39,10 @@ namespace Level {
             return activeParts;
         }
 
+        public void Append(ActiveFieldParts parts) {
+            activeParts.Insert(activeParts.Count - 1, parts);
+        }
+
         public string DisplayActiveParts() {
             var str = "";
             for(int y = 0; y < mapSize.y; y++) {
